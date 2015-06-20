@@ -10,9 +10,8 @@ ul {
 
 li { 
     float: left; 
-    width: 150px; 
+    width: 250px; 
     height:150px;
     border: 1px black solid; 
-
 }
 
