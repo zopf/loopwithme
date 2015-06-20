@@ -1,28 +1,12 @@
-<<<<<<< HEAD
-ul {width: 300px; 
-    list-style: none; 
-    line-height: normal; 
-    
+ul{
+    margin-left:15%;
+    margin-right:15%;
 }
-
-li {float: left; 
-    width: 10px; 
-    border: 1px black solid;
-=======
-ul { 
-    width: auto; 
-    list-style: none; 
-    line-height: normal; 
-    margin-left: auto;
-    margin-right:auto;
-    padding-top:50px;
-}
-
-li { 
-    float: left; 
-    width: 150px; 
-    height:150px;
-    border: 1px black solid; 
->>>>>>> 3a9ced2dc805cc0b98ac1a88bbd33e5118459bd6
+li{
+    line-height:200px;
+    float:left;
+    list-style-type:none;
+    width:30%;
+    border-style:solid;
 }
 
