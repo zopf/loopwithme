@@ -1,0 +1,16 @@
+ul { 
+    width: auto; 
+    list-style: none; 
+    line-height: normal; 
+    margin-left: auto;
+    margin-right:auto;
+    padding-top:50px;
+}
+
+li { 
+    float: left; 
+    width: 150px; 
+    height:150px;
+    border: 1px black solid; 
+}
+
