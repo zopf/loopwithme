@@ -1,3 +1,11 @@
+var
+width = 800,
+height = width - 200,
+bg = 0,
+myHeight = height,
+myWidth = width,
+myHeight = 400;
+
 function setup() {
     createCanvas(myWidth, myHeight);
     background(bg);
