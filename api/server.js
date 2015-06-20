@@ -33,52 +33,52 @@ function originIsAllowed(origin) {
   return true;
 }
 
-var boardState = {
+var gridState = {
   "rows": 3,
   "cols": 3,
   "loop_length": 16,
-  "cards": [
+  "cells": [
 
   ]
 };
 
-function initializeBoardState() {
-  for(var row=0; row < boardState.rows; row++) {
-    for(var col=0; col < boardState.cols; col++) {
-      boardState.cards.push(
+function initializeGridState() {
+  for(var row=0; row < gridState.rows; row++) {
+    for(var col=0; col < gridState.cols; col++) {
+      gridState.cells.push(
         {
           "row": row,
           "col": col,
           "loop": Array.apply(null, 
-              Array( boardState.loop_length )
+              Array( gridState.loop_length )
             ).map( Number.prototype.valueOf, 0 )
         }
       );
     }
   }
 }
-initializeBoardState();
+initializeGridState();
 
-function getBoardState() {
-  return boardState;
+function getGridState() {
+  return gridState;
 }
 
-function updateCard(row, col, loop) {
-  var card = _.where(boardState.cards, {"row":row, "col":col})[0];
-  card.loop = loop;
-  console.log((new Date()) + ' Card (' + row + ',' + col + ') updated.');
-  event_server.emit('card_update', {
-    action: 'card_update',
-    row: card.row,
-    col: card.col,
-    loop: card.loop
+function updateCell(row, col, loop) {
+  var cell = _.where(gridState.cells, {"row":row, "col":col})[0];
+  cell.loop = loop;
+  console.log((new Date()) + ' Cell (' + row + ',' + col + ') updated.');
+  event_server.emit('cell_update', {
+    action: 'cell_update',
+    row: cell.row,
+    col: cell.col,
+    loop: cell.loop
   });
-  console.log((new Date()) + ' Update for card (' + row + ',' + col + ') pushed to clients.');
+  console.log((new Date()) + ' Update for cell (' + row + ',' + col + ') pushed to clients.');
 }
 
 function routeIncomingMessage(obj) {
-  if(obj.action=='card_update') {
-    updateCard(obj.row, obj.col, obj.loop);
+  if(obj.action=='cell_update') {
+    updateCell(obj.row, obj.col, obj.loop);
   }
 }
 
@@ -93,8 +93,11 @@ wsServer.on('request', function(request) {
 
     var connection = request.accept(null, request.origin);
     console.log((new Date()) + ' Connection accepted.');
-    connection.sendUTF(JSON.stringify(getBoardState()));
-    console.log((new Date()) + ' Initial board state sent.');
+    var gridMessage = {};
+    _.extend(gridMessage, getGridState());
+    gridMessage.action='grid_update';
+    connection.sendUTF(JSON.stringify(gridMessage));
+    console.log((new Date()) + ' Initial grid state sent.');
 
     // This is the most important callback for us, we'll handle
     // all messages from users here.
@@ -111,8 +114,8 @@ wsServer.on('request', function(request) {
         }
     });
 
-    event_server.on('card_update', function(updated_card) {
-      connection.sendUTF(JSON.stringify(updated_card));
+    event_server.on('cell_update', function(updated_cell) {
+      connection.sendUTF(JSON.stringify(updated_cell));
     });
 
     connection.on('close', function(reasonCode, description) {
