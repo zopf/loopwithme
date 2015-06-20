@@ -9,7 +9,7 @@ myHeight = 400;
 function setup() {
     createCanvas(myWidth, myHeight);
     background(bg);
-    fill(0);
+    fill(20, 30, 40);
     strokeWeight(0);
 }
 
