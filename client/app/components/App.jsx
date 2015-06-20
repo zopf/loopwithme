@@ -11,12 +11,12 @@ export default class App extends React.Component {
     {cells:[{loop:[0,0,0,0,1,0,0,1,0,1,0,0,1,1,0,1,0], selected:true},{loop:[0,0,0,0,1,0,0,1,0,1,0,0,1,1,0,1,0]},{loop:[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},{loop:[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},{loop:[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},{loop:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},{loop:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},{loop:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},{loop:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}]};
     this.startWebSocket();
   }
-  startWebSocket() { 
+  startWebSocket() {
     var wsUri = 'ws://localhost:5000/';
-    this.websocket = new WebSocket(wsUri); 
-    this.websocket.onopen = function(evt) {  }; 
-    this.websocket.onclose = function(evt) {  }; 
-    this.websocket.onmessage = function(evt) { 
+    this.websocket = new WebSocket(wsUri);
+    this.websocket.onopen = function(evt) {  };
+    this.websocket.onclose = function(evt) {  };
+    this.websocket.onmessage = function(evt) {
       // debugger;
       var obj = JSON.parse(evt.data);
       console.log(obj);
@@ -36,7 +36,7 @@ export default class App extends React.Component {
         console.log(this.state);
       }
     }.bind(this);
-    this.websocket.onerror = function(evt) { console.log(evt.data) }; 
+    this.websocket.onerror = function(evt) { console.log(evt.data) };
   }
   sendCellUpdate(cell) {
     const message = cell;
