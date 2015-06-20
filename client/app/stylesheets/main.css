@@ -1,0 +1,28 @@
+body {
+  /*background: #049372;*/
+}
+
+.active{
+  background-color: #52B3D9;
+}
+
+.inactive{
+  background-color: #FFF;
+}
+
+li.cell{
+  list-style-type: none;
+  border: 1px solid black;
+  display: inline-block;
+  height: 136px;
+  width: 136px;
+  cursor: pointer;
+}
+
+.grid {
+    margin: 0 auto;
+    width: 500px;
+    padding-top:2%;
+    padding-left:10%;
+    padding-right:10%;
+}
