@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+ul {width: 300px; 
+    list-style: none; 
+    line-height: normal; 
+    
+}
+
+li {float: left; 
+    width: 10px; 
+    border: 1px black solid;
+=======
 ul { 
     width: auto; 
     list-style: none; 
@@ -12,5 +23,6 @@ li {
     width: 150px; 
     height:150px;
     border: 1px black solid; 
+>>>>>>> 3a9ced2dc805cc0b98ac1a88bbd33e5118459bd6
 }
 
