@@ -5,7 +5,7 @@ export default class Grid extends React.Component {
   render() {
     var cells=[];
     this.props.cells.forEach(function(cell, i) {
-      cells.push(<Cell key={i} loop={cell.loop}/>);
+      cells.push(<Cell key={i} {...cell} />);
     });
     return <ul className='grid'>
               {cells}
