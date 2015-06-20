@@ -11,8 +11,6 @@ function setup() {
     background(bg);
     fill(0);
     strokeWeight(0);
-    player = new Entity(width/20, myHeight/2, 10, 10);
-    player.color = yellow;
 }
 
 function draw() {
