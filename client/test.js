@@ -1,24 +1,30 @@
 $(document).ready(function(){
-    function changeColorGrid(){
+
         $("#box1").hover(function(){
             $(this).css("background-color", "lightblue");
-            },
-        $("#box1").hover(function(){
+            });
+        $("#box2").hover(function(){
             $(this).css("background-color", "lightblue");
-            },
-        $("#box1").hover(function(){
+            });
+        $("#box3").hover(function(){
             $(this).css("background-color", "lightblue");
-            },
-        
-        $("#box1").hover(function(){
+            });
+        $("#box4").hover(function(){
             $(this).css("background-color", "lightblue");
-            },
-        $("#box1").hover(function(){
+            });
+        $("#box5").hover(function(){
             $(this).css("background-color", "lightblue");
-            },
-        $("#box1").hover(function(){
+            });
+        $("#box6").hover(function(){
             $(this).css("background-color", "lightblue");
-        }
-    };
-    changeColorGrid();
+        });
+        $("#box7").hover(function(){
+            $(this).css("background-color", "lightblue");
+        });
+        $("#box8").hover(function(){
+            $(this).css("background-color", "lightblue");
+        });
+        $("#box9").hover(function(){
+            $(this).css("background-color", "lightblue");
+        });
 });
