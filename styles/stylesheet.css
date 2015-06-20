@@ -1,9 +1,10 @@
 .grid {
     padding-top:10%;
+    padding-left:10%;
+    padding-right:10%;
 }
 
 .row {
-    text-align:center;
     margin-left:auto;
     margin-right:auto;
     
@@ -14,6 +15,7 @@
     border-bottom-style:solid;
     border-right-style:solid;
     border-top-style:solid;
+    border-left-style:solid;
 }
 
 
