@@ -30,3 +30,28 @@ li.cell{
 .selected{
   background-color:  #663399;
 }
+
+.padContainer{
+  margin-top: 50px;
+  border: 1px solid #000;
+  width: 600px;
+  margin: 0 auto;
+}
+
+li.pad{
+  list-style-type: none;
+  display: inline-block;
+  border: 1px solid #000;
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.soundOn{
+  background-color: #1F3A93;
+}
+
+.soundOff{
+
+}

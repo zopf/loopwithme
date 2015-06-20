@@ -1,6 +1,8 @@
 import React from 'react';
 import Grid from './Grid';
+import PadContainer from './PadContainer';
 import _ from 'underscore';
+
 
 export default class App extends React.Component {
   constructor(props) {
@@ -12,7 +14,7 @@ export default class App extends React.Component {
     this.startWebSocket();
   }
   startWebSocket() {
-    var wsUri = 'ws://localhost:5000/';
+    var wsUri = 'ws://loop-with-me-api.herokuapp.com';
     this.websocket = new WebSocket(wsUri);
     this.websocket.onopen = function(evt) {  };
     this.websocket.onclose = function(evt) {  };
@@ -21,6 +23,7 @@ export default class App extends React.Component {
       var obj = JSON.parse(evt.data);
       console.log(obj);
       if(obj.action == 'grid_update') {
+        obj.cells[0].selected = true;
         this.setState(obj);
       } else if(obj.action == 'cell_update') {
         const cells = this.state.cells;
@@ -43,10 +46,31 @@ export default class App extends React.Component {
     message.action = 'cell_update';
     this.websocket.send(JSON.stringify(message));
   }
+  setSelection(cellIndex){
+    var cells = this.state.cells;
+    _.each(cells, function(cell){ return cell.selected = false });
+    var currentCell = cells[cellIndex];
+    var updatedCell = _.where( cells, {row:currentCell.row, col:currentCell.col} )[0];
+    updatedCell.selected = true;
+    this.setState({cells: cells});
+    console.log("Hello the cell was clicked");
+  }
+  setPadGroup(padIndex){
+    var cells = this.state.cells;
+    var selectedCell = _.where(cells, {selected: true})[0];
+    if(selectedCell.loop[padIndex]){
+      selectedCell.loop[padIndex]=0;
+    }else{
+      selectedCell.loop[padIndex]=1;
+    }
+    this.setState({cells: cells});
+    this.sendCellUpdate(selectedCell);
+  }
   render() {
     return (
       <div>
-        <Grid cells={this.state.cells} />;
+        <Grid handleSelection={this.setSelection.bind(this)} cells={this.state.cells} />
+        <PadContainer togglePad={this.setPadGroup.bind(this)} currentCell={_.where(this.state.cells, {selected: true})[0]}/>
       </div>
     );
   }

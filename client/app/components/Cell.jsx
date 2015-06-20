@@ -15,7 +15,7 @@ export default class Cell extends React.Component {
 
     //var activeClass = cellValue > 0 ? 'cell active' : 'cell inactive';
 
-    return <li className={classes}>{this.props.loop}</li>;
+    return <li onClick={this.props.handleSelection} className={classes}>{this.props.loop}</li>;
   }
 }
 
